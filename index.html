@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cloth Shop Billing - 500 Stock | 132 Workers | 200 Customers</title>
+    <style>
+        body { font-family: Arial; margin: 20px; background: #f5f5f5; }
+        .container { max-width: 900px; margin: auto; background: white; padding: 20px; border-radius: 10px; }
+        section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        input, select, button { padding: 10px; margin: 5px; border: 1px solid #ccc; border-radius: 4px; }
+        button { background: #4CAF50; color: white; cursor: pointer; }
+        button:hover { background: #45a049; }
+        .stock-item { background: #e8f5e8; padding: 10px; margin: 5px 0; border-radius: 4px; }
+        .bill-item { background: #f0f8ff; padding: 10px; margin: 5px 0; }
+        #incentives { background: #fff3cd; }
+        h1 { color: #2c3e50; text-align: center; }
+        .status { padding: 10px; margin: 10px 0; border-radius: 4px; }
+        .success { background: #d4edda; color: #155724; }
+        .warning { background: #fff3cd; color: #856404; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>👗 Cloth Shop Billing System</h1>
+        <div class="status success">📦 500 Stock Items | 👥 132 Workers | 🛒 200 Customers Capacity</div>
+        
+        <!-- Customer Details -->
+        <section>
+            <h3>Customer Details</h3>
+            <input id="customerName" placeholder="Customer Name">
+            <input id="phone" placeholder="Phone Number" oninput="fetchLastBill()">
+            <div id="lastBill"></div>
+        </section>
+        
+        <!-- Worker Selection -->
+        <section>
+            <h3>Worker (1-132)</h3>
+            <input type="number" id="workerNumber" min="1" max="132" placeholder="Enter Worker Number 1-132" style="width:150px;">
+            <div id="workerInfo"></div>
+        </section>
+        
+        <!-- Current Stock -->
+        <section>
+            <h3>📦 Current Stock (Click to Add to Bill)</h3>
+            <div id="stockList"></div>
+            <button onclick="showAddStock()">➕ Add New Stock Items</button>
+        </section>
+        
+        <!-- Bill Items -->
+        <section>
+            <h3>🛒 Bill Items</h3>
+            <div id="billItems"></div>
+            <button onclick="generateBill()">💰 Generate & Save Bill</button>
+        </section>
+        
+        <!-- Worker Incentives -->
+        <section id="incentives">
+            <h3>🏆 Worker Incentives (₹1 per Piece)</h3>
+            <button onclick="loadIncentives()">Refresh Top Workers</button>
+            <button onclick="resetMonth()" style="background: #f44336;">🔄 Reset Monthly</button>
+            <div id="incentivesList"></div>
+        </section>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
